@@ -18,26 +18,15 @@ import QuillEditor from "../../../../components/Quill-Editor";
 import { YupCourseValidation } from "./schema/YupCourseValidation"
 import { CourseDefaultValue } from "./schema/CourseDefaultValue"
 import { useNavigate } from "react-router"
-import jwt_decode from "jwt-decode"
 import { useDispatch } from "react-redux"
-import { saveClaimsAction, saveTokenAction } from '../../../../features/auth/authSlice'
 
 const CourseCreateForm = props => {
 
-  const key = "token"
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-
+ 
   const { enqueueSnackbar } = useSnackbar()
   const [error, setError] = useState("")
 
-  const saveUserAuthDetails = (data) => {
-    localStorage.setItem(key,data.access);
-    const claims = jwt_decode( data.access);
-    console.log('Claims::', claims);
-    dispatch(saveTokenAction( data.access));
-    dispatch(saveClaimsAction(claims));
-  };
 
   return (
     <Container>
@@ -46,7 +35,7 @@ const CourseCreateForm = props => {
       initialValues={CourseDefaultValue}
       validationSchema={YupCourseValidation}
       onSubmit={async (values, formikHelpers) => {
-        console.log(values);
+       
 
         
         try {

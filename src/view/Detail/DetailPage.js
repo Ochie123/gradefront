@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useQuery } from "react-query";
 
 import { loadCourse } from '../../data/api/api'
-import { loadGrades } from '../../data/api/api'
 
 import { loadUsers } from '../../data/api/api';
 import { useParams } from 'react-router-dom';
@@ -38,6 +37,10 @@ function DetailPage() {
            
             <h2> <div dangerouslySetInnerHTML={{ __html: course.overview }} /></h2>
           </div>
+          <Typography textColor="success.400" fontWeight="xl" my={1}>
+          Course by: {course.username}
+          </Typography>
+        
           {token ? (
                 <Enrolled/>
             ):(
