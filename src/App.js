@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+ import React, { Suspense } from 'react';
 import { createGlobalStyle } from "styled-components";
 
 import 'react-quill/dist/quill.snow.css';
